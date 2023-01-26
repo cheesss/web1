@@ -1,0 +1,8 @@
+.alert-box {
+    background: rgb(49, 149, 139);
+    color: black;
+    padding: 20px;
+    border-radius: 5px;
+    /*display: none을 하면 요소 전체가 안보이게 된다*/
+    display: none;
+}
