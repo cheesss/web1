@@ -7,15 +7,22 @@
 
 <body>
 
-    <div class="alert-box" id="alert">알람 박스
-    <button onclick="아무렇게나작명('none');">닫기버튼</button>
+    <div class="alert-box" id="noId">아이디 없다잉~
+        <button onclick="알림창컨트롤('noId','none');">닫기버튼</button>
     </div>
-    <button onclick="아무렇게나작명('block');">열기버튼</button>
+    <button onclick="알림창컨트롤('noId','block');">아이디</button>
+
+
+    <div class="alert-box" id="noPassword">비번 없다잉~
+        <button onclick="알림창컨트롤('noPassword','none');">닫기버튼</button>
+    </div>
+    <button onclick="알림창컨트롤('noPassword','block');">비번</button>
     
 
     <script>
-        function 아무렇게나작명(a){
-            document.getElementById('alert').style.display=a; 
+
+        function 알림창컨트롤(id, display){
+            document.getElementById(id).style.display=display; 
         }
   
     </script>
