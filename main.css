@@ -6,3 +6,7 @@
     /*display: none을 하면 요소 전체가 안보이게 된다*/
     display: none;
 }
+
+.yellow-bg {
+    background: yellow;
+}
