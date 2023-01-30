@@ -9,7 +9,7 @@ const user1Copy = Object.assign({}, user1);
 console.log(user1Copy)
 
 function isLynGenius(a){
-    if(a.includes("천재")){
+    if(a.includes("천재" )){
         console.log(a.includes("천재"));
         console.log("틀린말이 있습니다.");
     } else{
