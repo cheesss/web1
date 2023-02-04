@@ -1,25 +1,41 @@
-import cv2
-import numpy as np
+import ccxt
+import pandas as pd
+import matplotlib.pyplot as plt
 
-# Load the image
-img = cv2.imread("patterns.jpg")
+# # Initialize the exchange object
+exchange = ccxt.binance()
 
-# Convert the image to grayscale
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+# # Fetch the historical data for Bitcoin
+symbol = "BTC/USDT"
+timeframe = "1d"
+ohlcv = exchange.fetch_ohlcv(symbol, timeframe)
 
-# Apply edge detection to find the boundaries
-edges = cv2.Canny(gray, 50, 150)
+# # Create a data frame from the data
+# df = pd.DataFrame(ohlcv, columns=["timestamp", "open", "high", "low", "close", "volume"])
 
-# Find the contours in the edge map
-contours, _ = cv2.findContours(edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+# # Convert the timestamp to a datetime object
+# df["timestamp"] = pd.to_datetime(df["timestamp"], unit="ms")
 
-# Loop through the contours and extract the images
-for i, contour in enumerate(contours):
-    # Get the bounding rectangle of the contour
-    x, y, w, h = cv2.boundingRect(contour)
-    
-    # Extract the individual image from the main image
-    individual_img = img[y:y+h, x:x+w]
-    
-    # Save the individual image
-    cv2.imwrite(f"individual_image_{i}.jpg", individual_img)
+
+
+import requests
+
+url = "https://api.blockchain.info/charts/transactions-per-second?timespan=5days&rollingAverage=8hours&format=json"
+
+response = requests.get(url)
+
+if response.status_code == 200:
+    try:
+        data = response.json()
+        transactions_per_second = data["values"][-1]["y"]
+        transactions_per_day = transactions_per_second * 86_400
+        print("Bitcoin on-chain transaction volume: {:,.0f} transactions per day".format(transactions_per_day))
+
+        # convert to dollars
+        conversion_rate = 63000  # current rate: 1 BTC = 63000 USD
+        transaction_volume_usd = transactions_per_day * conversion_rate
+        print("Bitcoin on-chain transaction volume: ${:,.2f}".format(transaction_volume_usd))
+    except ValueError:
+        print("Could not parse response as JSON.")
+else:
+    print("Request failed with status code", response.status_code)
