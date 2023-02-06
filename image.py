@@ -32,8 +32,3 @@ if response.status_code == 200:
 else:
     print("Request failed with status code", response.status_code)
 
-df = {}
-for data in datas:
-    if time.strftime(,data["values"]["x"])
-plt.plot()
-print(time.strftime('%Y%m%d', now))
