@@ -6,7 +6,7 @@ ignoredb.splite3
 
 migrations/     
 #폴더 전체 미포함
-
+_media/
 dummy/
 
 ### Django ###
