@@ -11,7 +11,9 @@ class Post(models.Model):
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
     #연,월,일로 내려가면서 저장하여 유저를 분산시켜야 서버 속도에 유리하다.
     #blank의 의미는 빈칸이어도 상관 없다는 뜻이다.
-    
+
+    file_upload = models.FileField(upload_to='blog/images/%Y/%m/%d/', blank=True)
+
 
     def __str__(self):
         return f'[{self.pk}]{self.title}'
