@@ -2,6 +2,10 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,django
 
 ignoredb.splite3
+#특정이름 미포함
+
+migrations/     
+#폴더 전체 미포함
 
 ### Django ###
 *.log
