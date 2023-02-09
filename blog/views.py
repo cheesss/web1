@@ -1,7 +1,8 @@
-from django.views.generic import ListView
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+# from django.shortcuts import render
 from .models import Post
 # Create your views here.
+
 
 # fbv 형식으로 만든 목록 페이지
 # def index(request):
@@ -33,3 +34,10 @@ class PostList(ListView):
     ordering = '-pk'
     # template_name = 'blog/index.html'
     # 템플릿 명을 명시하지 않으면 post_list로 템플릿을 인식한다.
+
+#목록형태로 보여주는 역할, index 대체
+
+
+class PostDetail(DetailView):
+    model = Post
+#single post 대체
