@@ -9,6 +9,7 @@ def index(request):
     {
 
         'posts':posts,
+        #데이터베이스와 연결된 인자.
     }
     )
 

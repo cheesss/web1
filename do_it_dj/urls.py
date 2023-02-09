@@ -20,4 +20,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('blog/', include('blog.urls')),
     #/blog/로 들어오면 blog파일의 urls.py를 참고하라는 뜻
+
+    path('',include('single_pages.urls'))
+    #도메인에 아무것도 붙이지 않고 들어왔을 경우
 ]
